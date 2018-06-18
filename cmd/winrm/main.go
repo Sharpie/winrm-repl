@@ -5,6 +5,8 @@ import (
 	"flag"
 	"fmt"
 	"os"
+
+	"github.com/Sharpie/winrm-repl/pkg/repl"
 )
 
 const (
@@ -25,8 +27,11 @@ func main() {
 		flag.Usage()
 		defer os.Exit(1)
 	default:
-		// TODO: Launch REPL.
-		defer os.Exit(0)
+		repl := repl.NewRepl(os.Stdin, os.Stdout)
+
+		// TODO: Right now, just a simple "echo" REPL. Need to pass a real WinRM
+		// connection.
+		repl.Run()
 	}
 }
 
