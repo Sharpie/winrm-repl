@@ -6,6 +6,9 @@ import (
 	"fmt"
 	"os"
 	"regexp"
+	"syscall"
+
+	"golang.org/x/crypto/ssh/terminal" // For reading passwords securely.
 
 	"github.com/Sharpie/winrm-repl/pkg/repl"
 	"github.com/Sharpie/winrm-repl/pkg/winrm"
@@ -64,9 +67,7 @@ func setup() {
 			os.Exit(1)
 		}
 
-		// TODO: Read password securely from stdin.
-
-		fmt.Println("Host info:", host)
+		host.Pass = readPassword()
 	}
 }
 
@@ -81,4 +82,16 @@ func parseHost(hostStr string) bool {
 	} else {
 		return false
 	}
+}
+
+func readPassword() string {
+	fmt.Printf("Enter password for %s: ", host.User)
+	bytes, err := terminal.ReadPassword(int(syscall.Stdin))
+
+	if err != nil {
+		fmt.Println("Error: Could not read password from stdin.")
+		os.Exit(1)
+	}
+
+	return string(bytes)
 }
