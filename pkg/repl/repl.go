@@ -41,7 +41,7 @@ func (r *Repl) Run() {
 }
 
 func (r *Repl) prompt() {
-	fmt.Fprint(r.output, "PS > ")
+	fmt.Fprint(r.output, "\nCMD > ")
 }
 
 func (r *Repl) read() bool {
