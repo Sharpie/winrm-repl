@@ -29,6 +29,10 @@
   branch = "master"
   name = "golang.org/x/crypto"
 
+[[constraint]]
+  branch = "master"
+  name = "github.com/masterzen/winrm"
+
 [prune]
   go-tests = true
   unused-packages = true

@@ -36,10 +36,10 @@ func main() {
 		flag.Usage()
 		defer os.Exit(1)
 	default:
-		repl := repl.NewRepl(os.Stdin, os.Stdout)
+		// FIXME: Check error value.
+		shell, _ := winrm.NewShell(host)
+		repl := repl.NewRepl(os.Stdin, os.Stdout, shell)
 
-		// TODO: Right now, just a simple "echo" REPL. Need to pass a real WinRM
-		// connection.
 		repl.Run()
 	}
 }

@@ -3,9 +3,85 @@
 
 [[projects]]
   branch = "master"
+  name = "github.com/Azure/go-ntlmssp"
+  packages = ["."]
+  revision = "4b934ac9dad38d389d34f0b98d98b2467c422012"
+
+[[projects]]
+  name = "github.com/ChrisTrenkamp/goxpath"
+  packages = [
+    ".",
+    "internal/execxp",
+    "internal/lexer",
+    "internal/parser",
+    "internal/parser/findutil",
+    "internal/parser/intfns",
+    "internal/parser/pathexpr",
+    "internal/xconst",
+    "internal/xsort",
+    "tree",
+    "tree/xmltree",
+    "tree/xmltree/xmlbuilder",
+    "tree/xmltree/xmlele",
+    "tree/xmltree/xmlnode"
+  ]
+  revision = "2ad3b31cf4a21db70fc0cacd0e0120eaae566f98"
+  version = "v1.0-alpha3"
+
+[[projects]]
+  name = "github.com/MSOpenTech/azure-sdk-for-go"
+  packages = ["core/tls"]
+  revision = "0fbd37144de3adc2aef74db867c0e15e41c7f74a"
+  version = "v1.2"
+
+[[projects]]
+  name = "github.com/masterzen/azure-sdk-for-go"
+  packages = [
+    "core/http",
+    "core/tls"
+  ]
+  revision = "0fbd37144de3adc2aef74db867c0e15e41c7f74a"
+  version = "v1.2"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/masterzen/simplexml"
+  packages = ["dom"]
+  revision = "4572e39b1ab9fe03ee513ce6fc7e289e98482190"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/masterzen/winrm"
+  packages = [
+    ".",
+    "soap"
+  ]
+  revision = "7e40f93ae939004a1ef3bd5ff5c88c756ee762bb"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/nu7hatch/gouuid"
+  packages = ["."]
+  revision = "179d4d0c4d8d407a32af483c2354df1d2c91e6c3"
+
+[[projects]]
+  branch = "master"
   name = "golang.org/x/crypto"
-  packages = ["ssh/terminal"]
-  revision = "027cca12c2d63e3d62b670d901e8a2c95854feec"
+  packages = [
+    "md4",
+    "ssh/terminal"
+  ]
+  revision = "a49355c7e3f8fe157a85be2f77e6e269a0f89602"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = [
+    "html",
+    "html/atom",
+    "html/charset"
+  ]
+  revision = "afe8f62b1d6bbd81f31868121a50b06d8188e1f9"
 
 [[projects]]
   branch = "master"
@@ -14,11 +90,35 @@
     "unix",
     "windows"
   ]
-  revision = "6c888cc515d3ed83fc103cf1d84468aad274b0a7"
+  revision = "63fc586f45fe72d95d5240a5d5eb95e6503907d3"
+
+[[projects]]
+  name = "golang.org/x/text"
+  packages = [
+    "encoding",
+    "encoding/charmap",
+    "encoding/htmlindex",
+    "encoding/internal",
+    "encoding/internal/identifier",
+    "encoding/japanese",
+    "encoding/korean",
+    "encoding/simplifiedchinese",
+    "encoding/traditionalchinese",
+    "encoding/unicode",
+    "internal/gen",
+    "internal/tag",
+    "internal/utf8internal",
+    "language",
+    "runes",
+    "transform",
+    "unicode/cldr"
+  ]
+  revision = "f21a4dfb5e38f5895301dc265a8def02365cc3d0"
+  version = "v0.3.0"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "5d23260104de1fc6bee0a07cb064f1b57081935b7958acdb627d18dd9c80ce02"
+  inputs-digest = "4ac43f06c5764fcadaa607cdbf31af7ff0881f06562130d8dfdd53bad90dd84d"
   solver-name = "gps-cdcl"
   solver-version = 1

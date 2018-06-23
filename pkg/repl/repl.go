@@ -5,21 +5,25 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+
+	"github.com/Sharpie/winrm-repl/pkg/winrm"
 )
 
 type Repl struct {
 	scanner *bufio.Scanner
 	output  io.Writer
+	shell   *winrm.Shell
 }
 
 const (
 	exitKwd = "exit"
 )
 
-func NewRepl(input io.Reader, output io.Writer) *Repl {
+func NewRepl(input io.Reader, output io.Writer, shell *winrm.Shell) *Repl {
 	return &Repl{
 		scanner: bufio.NewScanner(input),
 		output:  output,
+		shell:   shell,
 	}
 }
 
@@ -30,7 +34,7 @@ func (r *Repl) Run() {
 		if r.read() {
 			r.eval()
 		} else {
-			// TODO: Also shut down WinRM connection.
+			r.shell.Close()
 			break
 		}
 	}
@@ -50,6 +54,11 @@ func (r *Repl) read() bool {
 }
 
 func (r *Repl) eval() {
-	// TODO: Just a simple "echo" action. Need to fit a real WinRM connection in.
-	fmt.Fprintln(r.output, r.scanner.Text())
+	// FIXME: Check error value.
+	result, _ := r.shell.Execute(r.scanner.Text())
+
+	// FIXME: Maybe just pass these right through to the Execute function and
+	//        have it write the results as they stream in.
+	fmt.Fprintln(r.output, result.Stderr)
+	fmt.Fprintln(r.output, result.Stdout)
 }
