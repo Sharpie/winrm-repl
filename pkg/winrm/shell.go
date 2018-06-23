@@ -35,7 +35,19 @@ func NewShell(host Host) (*Shell, error) {
 		(2 * time.Second),
 	)
 
-	client, err := winrm.NewClient(endpoint, host.User, host.Pass)
+	// Copy defualt connection parameters and flip auth mechanism from Basic
+	// to NTLM.
+	params := *winrm.DefaultParameters
+	params.TransportDecorator = func() winrm.Transporter {
+		return &winrm.ClientNTLM{}
+	}
+
+	client, err := winrm.NewClientWithParameters(
+		endpoint,
+		host.User,
+		host.Pass,
+		&params,
+	)
 	if err != nil {
 		return wrappedShell, err
 	}
